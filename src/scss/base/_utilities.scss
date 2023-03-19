@@ -1,0 +1,21 @@
+@use "../abstract/variables"as v;
+
+.mt-0 {
+    margin-top: 0;
+}
+
+.mt-5 {
+    margin-top: 5rem;
+}
+
+.mt-10 {
+    margin-top: 10rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.hidden {
+    display: none;
+}

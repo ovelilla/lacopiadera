@@ -1,0 +1,21 @@
+{
+    "name": "hp/lacopiadera",
+    "description": "lacopiadera",
+    "autoload": {
+        "psr-4": {
+            "Models\\": "application/models",
+            "Controllers\\": "application/controllers"
+        }
+    },
+    "authors": [
+        {
+            "name": "Oscar",
+            "email": "o.velillaa@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.4.1",
+        "phpmailer/phpmailer": "^6.6.4",
+        "dompdf/dompdf": "^2.0.0"
+    }
+}

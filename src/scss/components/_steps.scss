@@ -1,0 +1,179 @@
+@use "../abstract/variables"as v;
+@use "../abstract/mixins"as m;
+
+.steps {
+    display: flex;
+    border-radius: 8px;
+    box-shadow: v.$shadow-md;
+
+    .step {
+        display: flex;
+        justify-content: center;
+        flex: 1 1 25%;
+        gap: 16px;
+        position: relative;
+        background-color: v.$white;
+        padding: 10px 16px;
+        border-right: 1px solid v.$slate-200;
+        border-left: 1px solid v.$slate-200;
+        cursor: pointer;
+
+        @include m.mobile {
+            padding: 12px 18px;
+        }
+
+        @include m.tablet {
+            justify-content: initial;
+            padding: 14px 20px;
+        }
+
+        @include m.desktop {
+            padding: 18px 26px;
+        }
+
+        &:not(:first-child) {
+            margin-left: -1px;
+        }
+
+        &:first-child {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+            border-left: none;
+
+            &::before {
+                display: none;
+            }
+        }
+
+        &:last-child {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            border-right: none;
+
+            &::after {
+                display: none;
+            }
+        }
+
+        &.active {
+            background-color: v.$slate-100;
+
+            &::after {
+                border-left-color: v.$slate-100;
+            }
+
+            .icon {
+                svg {
+                    color: v.$gray-600;
+                }
+            }
+
+            .info {
+                .title {
+                    color: v.$gray-700;
+                }
+
+                .message {
+                    color: v.$gray-700;
+                }
+            }
+        }
+
+        &.done {
+            background-color: v.$white;
+
+            &::after {
+                border-left-color: v.$white;
+            }
+
+            .icon {
+                svg {
+                    color: v.$gray-600;
+                }
+            }
+
+            .info {
+                .title {
+                    color: v.$gray-700;
+                }
+
+                .message {
+                    color: v.$gray-700;
+                }
+            }
+        }
+
+        &::after,
+        &::before {
+            position: absolute;
+            content: "";
+            top: 50%;
+            height: 0;
+            width: 0;
+            border: solid transparent;
+            pointer-events: none;
+            transition: all ease-in-out 0.3s;
+        }
+
+        &::after {
+            z-index: 3;
+            left: 100%;
+            margin-top: -14px;
+            border-width: 14px;
+            border-left-color: v.$white;
+        }
+
+        &::before {
+            left: -11px;
+            padding: 10px;
+            border-width: 0 1px 1px 0;
+            border-color: v.$slate-200;
+            transform: translateY(-50%) rotate(-45deg);
+        }
+
+        .icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-self: stretch;
+
+            svg {
+                width: 24px;
+                height: 24px;
+                color: v.$gray-300;
+
+                @include m.mobile {
+                    width: 26px;
+                    height: 26px;
+                }
+
+                @include m.tablet {
+                    width: 28px;
+                    height: 28px;
+                }
+            }
+        }
+
+        .info {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-self: stretch;
+
+            @include m.tablet {
+                display: flex;
+            }
+
+            .title {
+                font-weight: 600;
+                color: v.$gray-300;
+            }
+
+            .message {
+                font-size: 1.4rem;
+                font-weight: 300;
+                color: v.$gray-300;
+            }
+        }
+    }
+}

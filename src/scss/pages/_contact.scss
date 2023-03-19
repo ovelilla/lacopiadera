@@ -1,0 +1,273 @@
+@use "../abstract/mixins" as m;
+@use "../abstract/variables" as v;
+
+.contact-header {
+    padding: 20px 0;
+
+    @include m.mobile {
+        padding: 30px 0;
+    }
+
+    @include m.tablet {
+        padding: 40px 0;
+    }
+
+    @include m.desktop {
+        padding: 50px 0;
+    }
+
+    @include m.desktopXL {
+        padding: 60px 0;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+.contact-info {
+    background-color: v.$white;
+    padding: 0;
+
+    .container {
+        padding: 60px 15px;
+        border-bottom: 1px solid v.$blue-light-400;
+
+        @include m.mobile {
+            padding: 70px 20px;
+        }
+
+        @include m.tablet {
+            padding: 80px 25px;
+        }
+
+        @include m.desktop {
+            padding: 90px 30px;
+        }
+
+        @include m.desktopXL {
+            padding: 100px 30px;
+        }
+
+        .grid {
+            @include m.grid(1, 20px, 20px);
+
+            @include m.tablet {
+                @include m.grid(2, 20px, 20px);
+            }
+
+            @include m.desktop {
+                @include m.grid(3, 30px, 30px);
+            }
+
+            .card {
+                display: flex;
+                padding: 20px;
+                gap: 20px;
+                border-radius: 8px;
+
+                @include m.desktop {
+                    gap: 10px;
+                }
+
+                @include m.desktopXL {
+                    gap: 20px;
+                }
+
+                .icon {
+                    display: flex;
+                    align-items: flex-start;
+
+                    .icon-container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        min-width: 60px;
+                        min-height: 60px;
+                        background-color: v.$blue-light-400;
+                        border-radius: 50%;
+                    }
+                }
+
+                .text {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+
+                    .title {
+                        color: v.$blue-light-900;
+                        font-size: 1.8rem;
+                        font-weight: 600;
+                        letter-spacing: normal;
+                    }
+
+                    .info {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4px;
+
+                        > * {
+                            font-size: 1.4rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.contact {
+    background-color: v.$white;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        @include m.mobile {
+            gap: 30px;
+        }
+
+        @include m.tablet {
+            flex-direction: row;
+            gap: 40px;
+        }
+
+        @include m.desktop {
+            gap: 70px;
+        }
+
+        @include m.desktopXL {
+            gap: 100px;
+        }
+
+        .col-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 40px;
+            flex: 1 1 45%;
+            overflow: hidden;
+            position: relative;
+            padding: 30px 40px;
+            background-color: v.$slate-50;
+            border-radius: 16px;
+
+            @include m.desktop {
+                padding: 40px 50px;
+            }
+
+            .header {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .social {
+                display: flex;
+                gap: 20px;
+                z-index: 1;
+
+                a {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 42px;
+                    height: 42px;
+                    color: v.$white;
+                    background-color: v.$blue-900;
+                    border-radius: 50%;
+                    transition: background-color 0.3s ease;
+
+                    &:hover {
+                        background-color: v.$blue-800;
+                    }
+                }
+            }
+        }
+
+        .col-right {
+            display: flex;
+            flex: 1 1 55%;
+            align-items: center;
+        }
+    }
+}
+
+.faq {
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+            text-align: center;
+        }
+
+        > p {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            margin-top: 40px;
+
+            @include m.tablet {
+                margin-top: 50px;
+            }
+
+            @include m.desktop {
+                margin-top: 60px;
+            }
+
+            .item {
+                display: flex;
+                flex-direction: column;
+                border-bottom: 1px solid v.$blue-light-400;
+
+                .header {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 16px 0;
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                    letter-spacing: normal;
+                    -webkit-tap-highlight-color: transparent;
+                    cursor: pointer;
+
+                    @include m.tablet {
+                        font-size: 1.8rem;
+                    }
+
+                    &.active svg {
+                        transform: rotate(90deg);
+                    }
+
+                    svg {
+                        min-width: 20px;
+                        min-height: 20px;
+                        transition: transform 0.3s ease;
+
+                        @include m.tablet {
+                            min-width: 22px;
+                            min-height: 22px;
+                        }
+                    }
+                }
+
+                .body {
+                    .content {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 16px;
+                        padding: 10px 30px 20px 30px;
+                    }
+                }
+            }
+        }
+    }
+}

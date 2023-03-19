@@ -1,0 +1,92 @@
+@use "../abstract/mixins" as m;
+@use "../abstract/variables" as v;
+
+.confirm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 800;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s forwards;
+
+    &.fadeOut {
+        animation: fadeOut 0.3s forwards;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        max-width: 400px;
+        width: 95%;
+        margin: auto;
+        background-color: v.$white;
+        border-radius: 8px;
+        animation: slideInTop 0.3s both;
+
+        @include m.tablet {
+            width: 100%;
+        }
+
+        &.slideOutTop {
+            animation: slideOutTop 0.3s forwards;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+
+            @include m.tablet {
+                padding: 20px 25px;
+            }
+
+            .title {
+                font-size: 1.8rem;
+                font-weight: 500;
+                color: v.$blue-900;
+            }
+
+            .close {
+                color: v.$gray-400;
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: v.$blue-900;
+                }
+            }
+        }
+
+        .body {
+            display: flex;
+            flex-direction: column;
+            padding: 15px 20px;
+
+            @include m.tablet {
+                padding: 20px 25px;
+            }
+
+            .description {
+                color: v.$blue-900;
+            }
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 15px 20px;
+
+            @include m.tablet {
+                gap: 20px;
+                padding: 20px 25px;
+            }
+        }
+    }
+}

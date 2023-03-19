@@ -1,0 +1,80 @@
+@use "../abstract/variables" as v;
+@use "../abstract/mixins" as m;
+
+.error404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    .code {
+        font-size: 8rem;
+        font-weight: 700;
+        letter-spacing: -2px;
+        line-height: 1;
+        background: -webkit-linear-gradient(-45deg, rgb(32 66 137), rgb(32 66 137));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -moz-text-fill-color: transparent;
+
+        @include m.mobile {
+            font-size: 12rem;
+            letter-spacing: -4px;
+        }
+
+        @include m.tablet {
+            font-size: 16rem;
+            letter-spacing: -6px;
+        }
+
+        @include m.desktop {
+            font-size: 20rem;
+            letter-spacing: -8px;
+        }
+
+        @include m.desktopXL {
+            font-size: 24rem;
+            letter-spacing: -10px;
+        }
+    }
+
+    .title {
+        font-size: 2rem;
+        font-weight: 600;
+        text-transform: uppercase;
+
+        @include m.mobile {
+            font-size: 2.4rem;
+        }
+
+        @include m.tablet {
+            font-size: 2.8rem;
+        }
+
+        @include m.desktop {
+            font-size: 3.2rem;
+        }
+
+        @include m.desktopXL {
+            font-size: 3.6rem;
+        }
+    }
+
+    .message {
+        text-align: center;
+
+        @include m.desktop {
+            font-size: 1.8rem;
+        }
+    }
+
+    a {
+        margin-top: 20px;
+
+        @include m.desktop {
+            margin-top: 30px;
+        }
+    }
+}

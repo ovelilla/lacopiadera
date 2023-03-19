@@ -1,0 +1,231 @@
+@use "../abstract/variables" as v;
+@use "../abstract/mixins" as m;
+
+.user-sidebar {
+    display: none;
+    justify-content: right;
+    z-index: 200;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0 0 0 / 0.3);
+    transition: background-color 0.3s ease;
+
+    &.active {
+        display: flex;
+    }
+
+    &.in {
+        animation: fadeIn 0.3s ease;
+
+        .container {
+            animation: slideInRight 0.3s ease forwards;
+        }
+    }
+
+    &.out {
+        animation: fadeOut 0.3s ease;
+
+        .container {
+            animation: slideOutRight 0.3s ease forwards;
+        }
+    }
+
+    @include m.tablet {
+        display: flex;
+        position: static;
+        width: auto;
+        height: auto;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        position: absolute;
+        top: 0;
+        left: -320px;
+        width: 320px;
+        height: 100%;
+        background-color: v.$white;
+        box-shadow: v.$shadow-sidebar;
+
+        @include m.tablet {
+            position: static;
+        }
+
+        @include m.desktop {
+            width: 340px;
+
+            &::-webkit-scrollbar {
+                width: 14px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                border-radius: 10px;
+                border: 4px solid transparent;
+                background-clip: content-box;
+                background-color: v.$slate-300;
+            }
+
+            &::-webkit-scrollbar-thumb:hover {
+                background-color: v.$slate-400;
+            }
+        }
+
+        @include m.desktopXL {
+            width: 360px;
+        }
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        position: relative;
+        padding: 20px 0;
+
+        @include m.mobile {
+            gap: 6px;
+            padding: 30px 0;
+        }
+
+        @include m.tablet {
+            gap: 8px;
+            padding: 40px 0;
+        }
+
+        @include m.desktop {
+            gap: 10px;
+            padding: 50px 0;
+        }
+
+        .avatar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            background-color: v.$slate-200;
+
+            span {
+                font-size: 32px;
+                font-weight: 500;
+                color: v.$white;
+                cursor: default;
+            }
+
+            svg {
+                width: 40px;
+                height: 40px;
+                color: v.$white;
+            }
+        }
+
+        .name {
+            margin-top: 10px;
+            font-size: 1.6rem;
+            color: v.$slate-600;
+
+            @include m.desktop {
+                font-size: 1.8rem;
+            }
+        }
+
+        .email {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: v.$slate-600;
+
+            @include m.desktop {
+                font-size: 1.6rem;
+            }
+        }
+
+        .close {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: v.$slate-100;
+            }
+
+            @include m.tablet {
+                display: none;
+            }
+
+            svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+
+        a {
+            display: flex;
+            gap: 10px;
+            padding: 20px 30px;
+            border-bottom: 1px solid v.$slate-100;
+            transition: background-color 0.2s ease;
+
+            @include m.desktop {
+                gap: 20px;
+            }
+
+            &:hover {
+                background-color: v.$slate-100;
+            }
+
+            &.active {
+                background-color: v.$slate-100;
+            }
+
+            &:active {
+                background-color: v.$slate-200;
+            }
+
+            .col-left {
+                display: flex;
+            }
+
+            .col-right {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 6px;
+
+                .title {
+                    color: v.$slate-700;
+                }
+
+                .description {
+                    color: v.$slate-700;
+                    font-size: 1.4rem;
+                    font-weight: 300;
+                }
+            }
+
+            svg {
+                min-width: 22px;
+                min-height: 22px;
+                color: v.$slate-600;
+            }
+        }
+    }
+}

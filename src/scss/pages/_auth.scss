@@ -1,0 +1,121 @@
+@use "../abstract/variables" as v;
+@use "../abstract/mixins" as m;
+
+.auth {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: v.$white;
+    border-radius: 8px;
+    box-shadow: v.$shadow-md;
+
+    @include m.mobile {
+        padding: 25px;
+    }
+
+    @include m.tablet {
+        padding: 30px;
+    }
+
+    @include m.desktop {
+        padding: 40px;
+    }
+
+    @include m.desktopXL {
+        padding: 50px;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        max-width: 600px;
+
+        .icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: v.$blue-900;
+            color: v.$white;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 400;
+            text-align: center;
+        }
+    }
+
+    .body {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        max-width: 600px;
+        width: 100%;
+
+        @include m.tablet {
+            flex-direction: row;
+            gap: 10px;
+        }
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        text-decoration: underline v.$blue-300;
+        color: v.$blue-900;
+
+        @include m.tablet {
+            height: 48px;
+        }
+
+        &:hover {
+            text-decoration-color: inherit;
+        }
+    }
+
+    .message {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 20px;
+        background-color: v.$blue-tw-50;
+        border-radius: 8px;
+
+        &.success {
+            background-color: v.$blue-tw-50;
+
+            svg {
+                color: v.$blue-900;
+            }
+        }
+
+        &.error {
+            background-color: v.$red-50;
+
+            svg {
+                color: v.$red-700;
+            }
+        }
+    }
+
+    .mio-checkbox-label {
+        margin-left: -12px;
+    }
+    
+}

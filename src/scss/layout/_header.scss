@@ -1,0 +1,123 @@
+@use "../abstract/variables" as v;
+@use "../abstract/mixins" as m;
+
+.main-header {
+    z-index: 600;
+    position: sticky;
+    top: 0;
+    background-color: v.$white;
+    box-shadow: v.$shadow-md;
+
+    &.home .container {
+        @include m.mobile {
+            max-width: 620px;
+        }
+
+        @include m.tablet {
+            max-width: 920px;
+        }
+
+        @include m.desktop {
+            max-width: 1040px;
+        }
+
+        @include m.desktopXL {
+            max-width: 1200px;
+        }
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        height: 60px;
+        margin: 0 auto;
+        padding: 0 20px;
+
+        @include m.mobile {
+            height: 65px;
+            padding: 0 25px;
+        }
+
+        @include m.tablet {
+            height: 70px;
+            padding: 0 30px;
+        }
+
+        @include m.desktop {
+            gap: 20px;
+            height: 75px;
+            padding: 0 35px;
+        }
+
+        @include m.desktopXL {
+            gap: 30px;
+            height: 80px;
+            padding: 0 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-self: stretch;
+            align-items: center;
+            flex-grow: 1;
+
+            a {
+                display: flex;
+                align-items: center;
+                height: 48px;
+                font-size: 2.4rem;
+                font-weight: 600;
+                color: v.$blue-900;
+                letter-spacing: -1px;
+
+                @include m.mobile {
+                    font-size: 2.6rem;
+                }
+
+                @include m.tablet {
+                    font-size: 2.8rem;
+                }
+            }
+        }
+
+        .menu {
+            display: none;
+            align-self: stretch;
+            align-items: center;
+            gap: 10px;
+
+            @include m.desktop {
+                display: flex;
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+                height: 48px;
+                padding: 0 20px;
+                border-radius: 48px;
+
+                &.current,
+                &:hover {
+                    background-color: v.$slate-100;
+                }
+
+                &:active {
+                    background-color: v.$slate-200;
+                }
+            }
+        }
+
+        .actions {
+            display: flex;
+            align-self: stretch;
+            align-items: center;
+            
+            @include m.mobile {
+                gap: 10px;
+            }
+        }
+    }
+}

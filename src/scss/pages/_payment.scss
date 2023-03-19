@@ -1,0 +1,156 @@
+@use "../abstract/variables" as v;
+@use "../abstract/mixins" as m;
+
+.payment {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    background-color: v.$white;
+    box-shadow: v.$shadow-md;
+    border-radius: 8px;
+
+    @include m.mobile {
+        padding: 30px;
+    }
+
+    @include m.tablet {
+        padding: 40px;
+    }
+
+    @include m.desktop {
+        gap: 20px;
+        padding: 50px;
+    }
+
+    .icon {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+
+        &.success {
+            background-color: v.$blue-900;
+        }
+
+        &.error {
+            background-color: v.$red-700;
+        }
+
+        @include m.desktop {
+            width: 80px;
+            height: 80px;
+        }
+
+        svg {
+            width: 48px;
+            height: 48px;
+            color: v.$white;
+
+            @include m.desktop {
+                width: 52px;
+                height: 52px;
+            }
+        }
+    }
+
+    .title {
+        text-align: center;
+
+        &.success {
+            color: v.$blue-900;
+        }
+
+        &.error {
+            color: v.$red-700;
+        }
+    }
+
+    .subtitle {
+        font-weight: 300;
+        font-size: 1.8rem;
+        text-align: center;
+
+        @include m.desktop {
+            font-size: 2rem;
+        }
+    }
+
+    hr {
+        align-self: center;
+        width: 100%;
+        max-width: 600px;
+        border: none;
+        border-bottom: 1px solid v.$slate-200;
+    }
+
+    .message {
+        display: flex;
+        gap: 10px;
+        align-self: center;
+        margin: 10px 0;
+        padding: 10px 20px;
+        background-color: v.$slate-100;
+        width: 100%;
+        max-width: 500px;
+        border-radius: 8px;
+
+        @include m.desktop {
+            margin: 20px 0;
+            padding: 15px 25px;
+        }
+    }
+
+    .transaction {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        gap: 8px;
+        width: 100%;
+        max-width: 500px;
+        padding: 20px 0;
+
+        @include m.desktop {
+            padding: 30px 0;
+        }
+
+        .line {
+            display: flex;
+            justify-content: space-between;
+
+            .label {
+                font-weight: 300;
+            }
+
+            .value {
+                font-weight: 500;
+            }
+
+            &:last-child {
+                .value {
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .action {
+        align-self: center;
+        width: 100%;
+        max-width: 500px;
+
+        @include m.desktop {
+            margin-top: 10px;
+        }
+    }
+}

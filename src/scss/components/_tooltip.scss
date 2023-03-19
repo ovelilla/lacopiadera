@@ -1,0 +1,42 @@
+@use "../abstract/variables" as v;
+@use "../abstract/mixins" as m;
+
+.tooltip {
+    z-index: 100;
+    position: fixed;
+    padding: 10px 16px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: v.$white;
+    text-align: center;
+    border-radius: 8px;
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        border-style: solid;
+        transform: translateX(-50%);
+    }
+
+    &.top {
+        &::after {
+            top: 100%;
+            border-width: 10px 10px 0;
+            border-color: rgba(0, 0, 0, 0.70) transparent transparent transparent;
+        }
+    }
+
+    &.bottom {
+        &::after {
+            bottom: 100%;
+            border-width: 0 10px 10px;
+            border-color: transparent transparent rgba(0, 0, 0, 0.70) transparent;
+        }
+    }
+
+    span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

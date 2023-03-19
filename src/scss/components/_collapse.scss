@@ -1,0 +1,13 @@
+.collapse {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.3s ease;
+
+    &.auto {
+        height: auto;
+    }
+
+    &.overflow {
+        overflow: visible;
+    }
+}

@@ -1,0 +1,62 @@
+@use "../abstract/mixins"as m;
+@use "../abstract/variables"as v;
+
+.hamburguer-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+
+    @include m.mobile {
+        width: 48px;
+        height: 48px;
+    }
+
+    @include m.tablet {
+        gap: 6px;
+    }
+
+    @include m.desktop {
+        display: none;
+    }
+
+    &:hover {
+        background-color: v.$slate-100;
+    }
+
+    &:active {
+        background-color: v.$slate-200;
+    }
+
+    &.active {
+        span:nth-child(1) {
+            transform: translate(4px, -1px) rotate(45deg);
+        }
+
+        span:nth-child(2) {
+            transform: translateX(-10px);
+            opacity: 0;
+        }
+
+        span:nth-child(3) {
+            transform: translate(4px, 1px) rotate(-45deg);
+        }
+    }
+
+    span {
+        width: 26px;
+        height: 3px;
+        background-color: v.$slate-700;
+        border-radius: 3px;
+        transform-origin: left;
+        transition: transform, opacity, .3s ease;
+
+        @include m.tablet {
+            width: 28px;
+        }
+    }
+}

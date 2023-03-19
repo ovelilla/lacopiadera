@@ -1,0 +1,79 @@
+@use "../abstract/mixins" as m;
+@use "../abstract/variables" as v;
+
+.popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 900;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s forwards;
+
+    &.out {
+        animation: fadeOut 0.3s forwards;
+
+        .content {
+            animation: slideOutTop 0.3s forwards;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        max-width: 420px;
+        width: 95%;
+        margin: auto;
+        border-radius: 8px;
+        animation: slideInTop 0.3s both;
+
+        @include m.tablet {
+            width: 100%;
+        }
+
+        .header {
+            position: relative;
+            padding: 2rem;
+            background: v.$white;
+
+            &::after {
+                position: absolute;
+                content: "";
+                top: 100%;
+                left: 50%;
+                height: 0;
+                width: 0;
+                margin-left: -20px;
+                border: 20px solid transparent;
+                border-top-color: v.$white;
+            }
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.4rem;
+            padding: 3rem 2rem;
+            background: v.$slate-100;
+
+            .title {
+                text-align: center;
+                font-size: 1.8rem;
+                font-weight: 400;
+                color: v.$blue-gray-900;
+            }
+
+            .message {
+                text-align: center;
+                color: v.$blue-gray-900;
+            }
+        }
+    }
+}

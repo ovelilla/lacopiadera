@@ -1,0 +1,130 @@
+@use "../abstract/mixins" as m;
+@use "../abstract/variables" as v;
+
+footer {
+    background-color: v.$slate-50;
+
+    .container {
+        margin: 0 auto;
+        padding: 0 15px;
+
+        @include m.mobile {
+            padding: 0 20px;
+            max-width: 620px;
+        }
+
+        @include m.tablet {
+            padding: 0 25px;
+            max-width: 920px;
+        }
+
+        @include m.desktop {
+            padding: 0 30px;
+            max-width: 1040px;
+        }
+
+        @include m.desktopXL {
+            max-width: 1200px;
+        }
+
+        .row-top {
+            display: flex;
+            padding: 60px 0 40px 0;
+            border-bottom: 1px solid v.$blue-50;
+
+            @include m.tablet {
+                padding: 80px 0 50px 0;
+            }
+
+            @include m.desktop {
+                padding: 100px 0 60px 0;
+            }
+
+            .logo {
+                display: flex;
+                align-self: stretch;
+                align-items: center;
+                flex-grow: 1;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    height: 48px;
+                    font-size: 2.4rem;
+                    font-weight: 600;
+                    color: v.$blue-900;
+                    letter-spacing: -1px;
+
+                    @include m.mobile {
+                        font-size: 2.6rem;
+                    }
+
+                    @include m.tablet {
+                        font-size: 2.8rem;
+                    }
+                }
+            }
+
+            .menu {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    height: 48px;
+                    padding: 0 20px;
+                    border-radius: 48px;
+    
+                    &.current,
+                    &:hover {
+                        background-color: v.$slate-100;
+                    }
+    
+                    &:active {
+                        background-color: v.$slate-200;
+                    }
+                }
+            }
+        }
+
+        .row-bottom {
+            padding: 30px 0;
+
+            @include m.tablet {
+                padding: 35px 0;
+            }
+
+            @include m.desktop {
+                padding: 40px 0;
+            }
+
+            .grid {
+                @include m.grid(1, 8px, 8px);
+                justify-items: center;
+
+                @include m.tablet {
+                    @include m.grid(3, 30px, 30px);
+                }
+
+                a,
+                p {
+                    color: v.$blue-600;
+                    font-size: 1.4rem;
+                    font-weight: 400;
+
+                    @include m.desktop {
+                        &:first-child {
+                            justify-self: start;
+                        }
+
+                        &:last-child {
+                            justify-self: end;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

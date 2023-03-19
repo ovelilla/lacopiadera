@@ -1,0 +1,18 @@
+{
+    "name": "lacopiadera",
+    "version": "1.0.0",
+    "description": "lacopiadera",
+    "main": "index.js",
+    "scripts": {
+        "dev": "concurrently \" webpack --watch --config ./webpack.config.dev.js\" \" sass --watch --embed-sources --style=compressed src/scss:public/build/css\"",
+        "build": "concurrently \" webpack --watch --config ./webpack.config.prod.js\" \" sass --watch --no-source-map --style=compressed src/scss:public/build/css\""
+    },
+    "author": "Oscar",
+    "license": "ISC",
+    "devDependencies": {
+        "concurrently": "^7.4.0",
+        "sass": "^1.54.9",
+        "webpack": "^5.74.0",
+        "webpack-cli": "^4.10.0"
+    }
+}

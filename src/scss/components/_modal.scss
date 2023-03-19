@@ -1,0 +1,202 @@
+@use "../abstract/mixins" as m;
+@use "../abstract/variables" as v;
+
+.modal {
+    display: flex;
+    align-items: center;
+    z-index: 800;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.25);
+
+    @include m.tablet {
+        padding: 20px;
+    }
+
+    &.fade-in {
+        animation: fadeIn 0.3s ease;
+    }
+
+    &.fade-out {
+        animation: fadeOut 0.3s ease forwards;
+    }
+
+    &.fullscreen {
+        padding: 0;
+
+        .content {
+            width: 100%;
+            min-height: 100%;
+            max-width: none !important;
+            border-radius: 0;
+
+            .body {
+                flex-grow: 1;
+            }
+        }
+    }
+
+    > .content {
+        display: flex;
+        flex-direction: column;
+        max-width: 600px;
+        width: 100%;
+        max-height: 100%;
+        margin: auto;
+        background-color: v.$white;
+        border-radius: 8px;
+
+        @include m.desktop {
+            width: 100%;
+        }
+
+        &.slide-in-top {
+            animation: slideInTop 0.3s ease forwards;
+        }
+
+        &.slide-out-top {
+            animation: slideOutTop 0.3s ease forwards;
+        }
+
+        > .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 60px;
+            max-height: 60px;
+            padding: 0 14px;
+            border-bottom: 1px solid v.$gray-200;
+
+            @include m.mobile {
+                padding: 0 16px;
+            }
+
+            @include m.tablet {
+                min-height: 65px;
+                max-height: 65px;
+                padding: 0 18px;
+            }
+
+            @include m.desktop {
+                min-height: 70px;
+                max-height: 70px;
+                padding: 0 22px;
+            }
+
+            .title {
+                font-size: 1.8rem;
+                font-weight: 300;
+                color: v.$gray-600;
+
+                @include m.tablet {
+                    font-size: 2rem;
+                }
+            }
+
+            .custom-title {
+                height: 24px;
+
+                @include m.mobile {
+                    height: 26px;
+                }
+
+                @include m.tablet {
+                    height: 28px;
+                }
+
+                @include m.desktop {
+                    height: 30px;
+                }
+            }
+
+            .actions {
+                display: flex;
+                gap: 20px;
+
+                button {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 48px;
+                    height: 48px;
+                    margin-right: -10px;
+                    color: v.$gray-400;
+                    border-radius: 50%;
+                    transition: color, background-color, 0.3s ease;
+
+                    &:hover {
+                        color: v.$blue-800;
+                        background-color: v.$blue-light-50;
+                    }
+                }
+            }
+        }
+
+        > .body {
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 14px;
+
+            @include m.mobile {
+                padding: 16px;
+            }
+
+            @include m.tablet {
+                padding: 18px;
+            }
+
+            @include m.desktop {
+                padding: 22px;
+
+                &::-webkit-scrollbar {
+                    width: 14px;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    border-radius: 8px;
+                    border: 4px solid transparent;
+                    background-clip: content-box;
+                    background-color: v.$gray-300;
+                }
+
+                &::-webkit-scrollbar-thumb:hover {
+                    background-color: v.$gray-400;
+                }
+            }
+        }
+
+        > .footer {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+            min-height: 65px;
+            max-height: 65px;
+            padding: 0 14px;
+            border-top: 1px solid v.$gray-200;
+
+            @include m.mobile {
+                min-height: 70px;
+                max-height: 70px;
+                padding: 0 16px;
+            }
+
+            @include m.tablet {
+                min-height: 75px;
+                max-height: 75px;
+                padding: 0 18px;
+            }
+
+            @include m.desktop {
+                min-height: 80px;
+                max-height: 80px;
+                padding: 0 22px;
+            }
+        }
+    }
+}
